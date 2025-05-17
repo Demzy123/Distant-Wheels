@@ -7,17 +7,17 @@ script = ExtResource("1_lti8b")
 
 [node name="Play" type="Button" parent="."]
 offset_left = 59.0
-offset_top = 40.0
+offset_top = 136.0
 offset_right = 480.0
-offset_bottom = 182.0
+offset_bottom = 278.0
 theme_override_font_sizes/font_size = 50
 text = "Play"
 
 [node name="Quit" type="Button" parent="."]
 offset_left = 59.0
-offset_top = 397.0
+offset_top = 314.0
 offset_right = 480.0
-offset_bottom = 539.0
+offset_bottom = 456.0
 theme_override_font_sizes/font_size = 50
 text = "Quit
 "
