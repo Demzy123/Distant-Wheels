@@ -1,10 +1,11 @@
-[gd_scene load_steps=35 format=3 uid="uid://byhnwkr1323sq"]
+[gd_scene load_steps=36 format=3 uid="uid://byhnwkr1323sq"]
 
 [ext_resource type="Texture2D" uid="uid://b5iuhiprdhle2" path="res://scene/player/texture/hurt/Pencap_hurt1.png" id="1_eeiom"]
 [ext_resource type="Script" uid="uid://0ney8hwinpfh" path="res://scene/player/player.gd" id="1_hosct"]
 [ext_resource type="Texture2D" uid="uid://cktro2tfkydfy" path="res://scene/player/texture/dash/Pencap_dash1.png" id="1_nfu6q"]
 [ext_resource type="Texture2D" uid="uid://pis68oa1inkr" path="res://scene/player/texture/hurt/Pencap_hurt2.png" id="2_gt2ev"]
 [ext_resource type="Texture2D" uid="uid://du51xglxnn1ux" path="res://scene/player/texture/dash/Pencap_dash2.png" id="2_hosct"]
+[ext_resource type="PackedScene" uid="uid://ppxdrgexdb8n" path="res://scene/abilities/attack_ability/attack_controller.tscn" id="2_i2ta4"]
 [ext_resource type="Texture2D" uid="uid://cm6cjubjeokod" path="res://scene/player/texture/hurt/Pencap_hurt3.png" id="3_aoq8s"]
 [ext_resource type="Texture2D" uid="uid://820w5h4t4knc" path="res://scene/player/texture/dash/Pencap_dash3.png" id="3_i2ta4"]
 [ext_resource type="Texture2D" uid="uid://hsqob60yohre" path="res://scene/player/texture/hurt/Pencap_hurt4.png" id="4_740qy"]
@@ -161,10 +162,14 @@ radius = 5.0
 collision_layer = 0
 script = ExtResource("1_hosct")
 
+[node name="AbilityManager" type="Node" parent="."]
+
+[node name="AttackController" parent="AbilityManager" instance=ExtResource("2_i2ta4")]
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_ibwp6")
-animation = &"hurt"
+animation = &"walk"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

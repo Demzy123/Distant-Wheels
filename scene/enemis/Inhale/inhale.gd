@@ -4,10 +4,6 @@ extends CharacterBody2D
 
 var max_speed = 50
 
-func _ready():
-	pass 
-
-
 func _process(delta):
 	var direction = get_direction_to_player()
 	velocity = max_speed * direction
@@ -25,3 +21,7 @@ func get_direction_to_player():
 	if player != null:
 		return (player.global_position - global_position).normalized()
 	return Vector2.ZERO
+
+
+func _on_area_2d_area_entered(area: Area2D):
+	queue_free()

@@ -4,9 +4,7 @@ extends CharacterBody2D
 
 var max_speed = 100
 
-func _ready():
-	pass 
-
+@warning_ignore("unused_parameter")
 func _process(delta):
 	var direction = movement_vector().normalized()
 	velocity = max_speed * direction

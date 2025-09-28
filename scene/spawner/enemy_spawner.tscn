@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cas5kthqev4iw"]
+
+[ext_resource type="Script" uid="uid://d4nl52twqaq1s" path="res://scene/spawner/enemy_spawner.gd" id="1_hp8sc"]
+[ext_resource type="PackedScene" uid="uid://c5x58wdpl7m23" path="res://scene/enemis/Inhale/inhale.tscn" id="2_0jpma"]
+
+[node name="enemy_spawner" type="Node"]
+script = ExtResource("1_hp8sc")
+inhale_scene = ExtResource("2_0jpma")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
