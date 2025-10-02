@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c5x58wdpl7m23"]
+[gd_scene load_steps=21 format=3 uid="uid://c5x58wdpl7m23"]
 
 [ext_resource type="Texture2D" uid="uid://c7ita7bkn2v0j" path="res://assets/enemis/inhale/hurt/Inhale_Hurt1.png" id="1_exigi"]
 [ext_resource type="Script" uid="uid://ccirjw35d0cux" path="res://scene/game_objects/enemis/Inhale/inhale.gd" id="1_s7spo"]
@@ -72,8 +72,12 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_exigi"]
 radius = 5.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_f36qc"]
+radius = 6.0
+
 [node name="Inhale" type="CharacterBody2D" groups=["enemy"]]
-collision_layer = 0
+collision_layer = 4
+collision_mask = 5
 script = ExtResource("1_s7spo")
 
 [node name="health_component" parent="." instance=ExtResource("2_u0qei")]
@@ -96,3 +100,11 @@ animation = &"walk"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_exigi")
+
+[node name="EnemyHitBox" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitBox"]
+position = Vector2(0, -6)
+shape = SubResource("CircleShape2D_f36qc")

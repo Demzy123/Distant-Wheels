@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://cu6fhvun0vqy3"]
+
+[ext_resource type="Script" uid="uid://b0ue1ondtvgn8" path="res://resources/upgrades/ability_upgrade.gd" id="1_m4cva"]
+
+[resource]
+script = ExtResource("1_m4cva")
+id = "melee_rate"
+name = "Melee Speed"
+description = "Increases melee attack speadly 5%"

@@ -3,10 +3,11 @@ extends CharacterBody2D
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var health_component = $health_component
 
-
-
 var max_speed = 50
 var kill_exp = 1
+
+func _ready():
+	(health_component as HealthComponent).died.connect(on_died)
 
 func _process(delta):
 	var direction = get_direction_to_player()
@@ -26,10 +27,6 @@ func get_direction_to_player():
 		return (player.global_position - global_position).normalized()
 	return Vector2.ZERO
 
-func _ready():
-	(health_component as HealthComponent).died.connect(on_died)
-
 func on_died():
 	Global.experience_kill.emit(kill_exp)
-
-	
+	queue_free()

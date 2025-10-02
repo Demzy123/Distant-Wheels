@@ -15,5 +15,6 @@ func on_died():
 	
 	var spawn_oos = (owner as Node2D).global_position 
 	var gem_instance = gem_drop_scene.instantiate() as Node2D
-	owner.get_parent().add_child(gem_instance)
+	var back_layer = get_tree().get_first_node_in_group("back_layer")
+	back_layer.add_child(gem_instance)
 	gem_instance.global_position = spawn_oos
