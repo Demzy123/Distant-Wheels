@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://dabdcrub81wou"]
+
+[ext_resource type="Script" uid="uid://d35jj5a4b8xn8" path="res://scene/components/gem_drop_component.gd" id="1_uc8mt"]
+[ext_resource type="PackedScene" uid="uid://cgfs666j25inm" path="res://scene/game_objects/materials/gem.tscn" id="2_jcyrw"]
+
+[node name="gem_drop_component" type="Node"]
+script = ExtResource("1_uc8mt")
+gem_drop_scene = ExtResource("2_jcyrw")

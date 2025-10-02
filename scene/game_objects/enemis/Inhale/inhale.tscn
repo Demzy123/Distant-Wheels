@@ -1,0 +1,98 @@
+[gd_scene load_steps=20 format=3 uid="uid://c5x58wdpl7m23"]
+
+[ext_resource type="Texture2D" uid="uid://c7ita7bkn2v0j" path="res://assets/enemis/inhale/hurt/Inhale_Hurt1.png" id="1_exigi"]
+[ext_resource type="Script" uid="uid://ccirjw35d0cux" path="res://scene/game_objects/enemis/Inhale/inhale.gd" id="1_s7spo"]
+[ext_resource type="Texture2D" uid="uid://jo3emufhl54v" path="res://assets/enemis/inhale/hurt/Inhale_Hurt2.png" id="2_s7spo"]
+[ext_resource type="PackedScene" uid="uid://bd0m0jbqevtvm" path="res://scene/components/health_component.tscn" id="2_u0qei"]
+[ext_resource type="PackedScene" uid="uid://dabdcrub81wou" path="res://scene/components/gem_drop_component.tscn" id="2_wwdq3"]
+[ext_resource type="Texture2D" uid="uid://bfguooasgotuk" path="res://assets/enemis/inhale/hurt/Inhale_Hurt3.png" id="3_y2twx"]
+[ext_resource type="Texture2D" uid="uid://ycnvmxidtnq" path="res://assets/enemis/inhale/hurt/Inhale_Hurt4.png" id="4_e1dgo"]
+[ext_resource type="PackedScene" uid="uid://bhxpceaotxl24" path="res://scene/components/hurt_box_component.tscn" id="4_f36qc"]
+[ext_resource type="Texture2D" uid="uid://bundg7mtqc54s" path="res://assets/enemis/inhale/walk/Inhale_Walk1.png" id="5_oamu6"]
+[ext_resource type="Texture2D" uid="uid://dvqhr6xeps4jk" path="res://assets/enemis/inhale/walk/Inhale_Walk2.png" id="6_nind1"]
+[ext_resource type="Texture2D" uid="uid://tyyahn1hsp5b" path="res://assets/enemis/inhale/walk/Inhale_Walk3.png" id="7_1061n"]
+[ext_resource type="Texture2D" uid="uid://bi1m1awwv5ch5" path="res://assets/enemis/inhale/walk/Inhale_Walk4.png" id="8_54uqv"]
+[ext_resource type="Texture2D" uid="uid://bpnilt8hmtyme" path="res://assets/enemis/inhale/walk/Inhale_Walk5.png" id="9_7y3s3"]
+[ext_resource type="Texture2D" uid="uid://b8h1kcscpmyto" path="res://assets/enemis/inhale/walk/Inhale_Walk6.png" id="10_pfh6q"]
+[ext_resource type="Texture2D" uid="uid://dmkjcbkuh6cbo" path="res://assets/enemis/inhale/walk/Inhale_Walk7.png" id="11_atxeo"]
+[ext_resource type="Texture2D" uid="uid://csc8wl2s5jmqd" path="res://assets/enemis/inhale/walk/Inhale_Walk8.png" id="12_2ed42"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ga33q"]
+radius = 8.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dhbqt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_exigi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_s7spo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_y2twx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_e1dgo")
+}],
+"loop": true,
+"name": &"hurt",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_oamu6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_nind1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_1061n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_54uqv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_7y3s3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_pfh6q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_atxeo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_2ed42")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 8.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_exigi"]
+radius = 5.0
+
+[node name="Inhale" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 0
+script = ExtResource("1_s7spo")
+
+[node name="health_component" parent="." instance=ExtResource("2_u0qei")]
+
+[node name="gem_drop_component" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("2_wwdq3")]
+health_component = NodePath("../health_component")
+
+[node name="HurtBoxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_f36qc")]
+health_component = NodePath("../health_component")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxComponent"]
+position = Vector2(0.5, -7)
+shape = SubResource("CircleShape2D_ga33q")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_dhbqt")
+animation = &"walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5)
+shape = SubResource("CircleShape2D_exigi")

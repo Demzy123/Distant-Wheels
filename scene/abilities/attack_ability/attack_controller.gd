@@ -1,6 +1,7 @@
 extends Node
 
 var attack_range = 45
+var knife_damage = 5
 
 @export var attack_ability: PackedScene
 
@@ -28,8 +29,9 @@ func _on_timer_timeout():
 	
 	var enemy_pos = enemies[0].global_position
 	
-	var attack_instance = attack_ability.instantiate() as Node2D
+	var attack_instance = attack_ability.instantiate() as AttackAbility
 	player.get_parent().add_child(attack_instance)
+	attack_instance.hit_box_component.damage = knife_damage
 	
 	attack_instance.global_position = (enemy_pos + player_pos) / 2
 	

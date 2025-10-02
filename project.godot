@@ -15,9 +15,14 @@ run/main_scene="uid://6hmxclxwu4al"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Global="*res://scene/global/global.tscn"
+
 [debug]
 
 gdscript/warnings/unused_parameter=0
+gdscript/warnings/unused_signal=0
 
 [display]
 
@@ -26,6 +31,20 @@ window/size/viewport_height=360
 window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="viewport"
+
+[file_customization]
+
+folder_colors={
+"res://assets/": "yellow",
+"res://resources/": "orange",
+"res://scene/": "blue",
+"res://scene/abilities/": "red",
+"res://scene/game_objects/": "pink",
+"res://scene/global/": "teal",
+"res://scene/level/": "green",
+"res://scene/manager/": "gray",
+"res://scene/ui/": "purple"
+}
 
 [input]
 
@@ -55,8 +74,8 @@ move_down={
 2d_physics/layer_1="world"
 2d_physics/layer_2="player"
 2d_physics/layer_3="enemy"
+2d_physics/layer_4="pickup"
 
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
-2d/snap/snap_2d_transforms_to_pixel=true
